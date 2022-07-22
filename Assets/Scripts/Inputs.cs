@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
-    private float vel = 1f;
+    private float vel = 1.0f;
     private Rigidbody2D Knight;
 
     public Animator animator;
@@ -35,7 +35,7 @@ public class Inputs : MonoBehaviour
 
     void Update()
     {   
-        // Make the player walk
+        // Faz o jogador andar
         float h = Input.GetAxis("Horizontal") ;
         transform.Translate (new Vector3(h * Time.deltaTime, 0  ,0) * vel);
         
@@ -70,7 +70,7 @@ public class Inputs : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
 
-            //Changing the animation of the Player.
+            //Muda a animação do player.
         if(Input.GetAxis("Horizontal") != 0)
         {
             // sendo pra trás ou pra frente, o valor vai ser negativo ou positivo, ou seja. Diferente de 0. Então ele vai puxar a animação de andar.
@@ -80,12 +80,12 @@ public class Inputs : MonoBehaviour
             animator.SetBool("Walking", false);
 
         }  
-
-        if(Input.GetAxis("Fire1") != 0)
+        //Muda para a animação de ataque
+/*         if(Input.GetAxis("Fire1") != 0)
         {
             animator.SetBool("Attacking", true);           
         }else{
             animator.SetBool("Attacking", false);           
-        }
+        } */
     }   
 }
