@@ -20,6 +20,7 @@ public class CoinsAccount : MonoBehaviour
    {
         if( other.gameObject.CompareTag("Coins"))
         {
+            // soma moedas
             coins++;
             Manager.inst.PlayAudio(coinsSound); 
             Destroy(other.gameObject);

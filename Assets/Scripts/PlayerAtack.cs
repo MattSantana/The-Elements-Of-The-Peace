@@ -67,12 +67,12 @@ public class PlayerAtack : MonoBehaviour
         if( colliderEnemy != null)
         {   
             // Executa a busca de um script no inimigo que esteja no objeto do colider. 
-            Enemy enemy = colliderEnemy.GetComponent<Enemy>();
+            EnemyTakeDamage enemy = colliderEnemy.GetComponent<EnemyTakeDamage>();
 
             // Salvamos o valor da busca em Enemy. Se o valor do script for diferente de nulo, ele chama a função takeDamage.
             if (enemy != null)
             {
-            enemy.takeDamage();            
+            enemy.takeDamage();
             }
         }
     } 
