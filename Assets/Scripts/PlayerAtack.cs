@@ -8,6 +8,8 @@ public class PlayerAtack : MonoBehaviour
     private Transform atkPoint;
     [SerializeField]
     private float atkRange; 
+    [SerializeField]
+    private LayerMask layersAtk;
 
     public Animator anim;
 
@@ -16,7 +18,7 @@ public class PlayerAtack : MonoBehaviour
     private Cooldown finishCombo;
 
     void Start() {
-        nextAtk = new Cooldown(0.33f, true);
+        nextAtk = new Cooldown(0.40f, true);
         finishCombo = new Cooldown(0.71f, true);
      }
 
@@ -40,13 +42,11 @@ public class PlayerAtack : MonoBehaviour
 
         if (atkCombo == 1)
         {
-            Debug.Log("Attack1");
             anim.SetTrigger("Attack1");
             atkCombo++;
         }
         else if ( atkCombo == 2)
         {
-            Debug.Log("Attack2");
             anim.SetTrigger("Attack2");
             atkCombo = 1;
         }
@@ -63,9 +63,11 @@ public class PlayerAtack : MonoBehaviour
 
     private void Attacking()
     {
-        Collider2D colliderEnemy = Physics2D.OverlapCircle( this.atkPoint.position, this.atkRange );
-        if( colliderEnemy != null)
+        Collider2D[] collidersEnemy = Physics2D.OverlapCircleAll( this.atkPoint.position, this.atkRange, this.layersAtk );
+        if( collidersEnemy != null)
         {   
+            foreach( Collider2D colliderEnemy in collidersEnemy){
+            Debug.Log("Atacando objeto" + colliderEnemy.name);
             // Executa a busca de um script no inimigo que esteja no objeto do colider. 
             EnemyTakeDamage enemy = colliderEnemy.GetComponent<EnemyTakeDamage>();
 
@@ -74,6 +76,8 @@ public class PlayerAtack : MonoBehaviour
             {
             enemy.takeDamage();
             }
+            } 
+
         }
     } 
 }

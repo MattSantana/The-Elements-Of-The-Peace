@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
-    private float vel = 1.0f;
+    private float vel = 2.0f;
     private Rigidbody2D Knight;
 
     public Animator animator;

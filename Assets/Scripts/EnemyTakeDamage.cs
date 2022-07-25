@@ -13,17 +13,19 @@ public class EnemyTakeDamage : MonoBehaviour
   public void takeDamage()
   {
     this.life--;
-
-    anim.SetBool("SlimeTakeHit", true);
-
+    Debug.Log (this.name + "recebeu dano. Vida: " + this.life);
 
     if (this.life == 0)
     {
       //finalizado
-      this.anim.SetBool("SlimeDeath", true);
+      this.anim.SetBool("Golem1Death", true);
+      this.anim.SetBool("SlimeDeath", true);  
+      this.anim.SetBool("Golem2Death", true);
     }else{
       //recebe dano
-      this.anim.SetTrigger("SlimeTakeDamage");
+      this.anim.SetTrigger("Golem1TakeHit");
+      this.anim.SetTrigger("SlimeTakeHit");
+      this.anim.SetTrigger("Golem2TakeHit");
     }
   }
 }
