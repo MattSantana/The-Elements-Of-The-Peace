@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAtack : MonoBehaviour
 {
+    //Aplicação de dano
     [SerializeField]
     private Transform atkPoint;
     [SerializeField]
@@ -11,18 +12,23 @@ public class PlayerAtack : MonoBehaviour
     [SerializeField]
     private LayerMask layersAtk;
 
+    //Animação
     public Animator anim;
-
     private int atkCombo = 1;
-     private Cooldown nextAtk;
+    private Cooldown nextAtk;
     private Cooldown finishCombo;
+
+    //Detectar se esta atacando ou não.
+    private bool ifAttacking;
 
     void Start() {
         nextAtk = new Cooldown(0.40f, true);
         finishCombo = new Cooldown(0.71f, true);
+
+        this.ifAttacking = false;
      }
 
-    void Update()
+    void LateUpdate()
     {
         if(Input.GetKeyDown(KeyCode.L) && nextAtk.IsFinished )
         {
@@ -37,7 +43,11 @@ public class PlayerAtack : MonoBehaviour
 
     }
     private void Attack()
-    {
+    {    
+        //vai passar a informação se estou atacando ou não para outro script que precisa dessa informação.
+        this.ifAttacking = true;
+
+        // Função para alterar os combos em animaçõs de ataque.
         anim.SetBool("Attacking", true); 
 
         if (atkCombo == 1)
@@ -61,8 +71,18 @@ public class PlayerAtack : MonoBehaviour
         }
     }
 
-    private void Attacking()
+    public bool playAtk
     {
+        get{
+            return this.ifAttacking;
+        }
+    }
+    private void Attacking()
+    {   
+        //vai passar a informação se estou atacando ou não para outro script que precisa dessa informação.
+        this.ifAttacking = true;
+
+        //Função feita para causar o dano.
         Collider2D[] collidersEnemy = Physics2D.OverlapCircleAll( this.atkPoint.position, this.atkRange, this.layersAtk );
         if( collidersEnemy != null)
         {   
@@ -77,7 +97,10 @@ public class PlayerAtack : MonoBehaviour
             enemy.takeDamage();
             }
             } 
-
         }
     } 
+    public void finishIfAttacking ()
+    {
+        this.ifAttacking = false;
+    }    
 }

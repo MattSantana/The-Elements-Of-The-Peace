@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
-    private float vel = 2.0f;
+    public float vel = 0.2f;
     private Rigidbody2D Knight;
 
     public Animator animator;
@@ -22,6 +22,10 @@ public class Inputs : MonoBehaviour
     private Vector3 facingRight;
     private Vector3 facingLeft;
 
+    // Verificar se esta atacando para poder andar. 
+    [SerializeField]
+    private PlayerAtack PlayerAttack;
+
 
     void Start()
     {
@@ -35,10 +39,16 @@ public class Inputs : MonoBehaviour
 
     void Update()
     {   
-        // Faz o jogador andar
+       // Faz o jogador andar
+       if( this.PlayerAttack.playAtk )
+       {
+        // ISSO DA BUGANDO O PARLLAX. Tenho que criar uma função que impeça o parallax de se mover quando o player não anda.
+        transform.Translate (new Vector3(0, 0  ,0));        
+       }else{
+        // Jogador não esta atacando. Pode se mover!
         float h = Input.GetAxis("Horizontal") ;
-        transform.Translate (new Vector3(h * Time.deltaTime, 0  ,0) * vel);
-        
+        transform.Translate (new Vector3(h * vel, 0  ,0) );   
+
         //Faz o jogador olhar para o lado que ele virar. 
         if( h  > 0 ) 
         { 
@@ -46,9 +56,11 @@ public class Inputs : MonoBehaviour
         }
         if(h < 0 ){
            transform.localScale = facingLeft;
-        }
+        }       
+       }
 
-        //Make the player jump
+
+        //Faz o Player pular
         inTheGround = Physics2D.OverlapCircle( isGround.position, 0.2f, Ground );
 
         if( Input.GetButtonDown("Jump") && inTheGround == true )
@@ -80,12 +92,6 @@ public class Inputs : MonoBehaviour
             animator.SetBool("Walking", false);
 
         }  
-        //Muda para a animação de ataque
-/*         if(Input.GetAxis("Fire1") != 0)
-        {
-            animator.SetBool("Attacking", true);           
-        }else{
-            animator.SetBool("Attacking", false);           
-        } */
+
     }   
 }
