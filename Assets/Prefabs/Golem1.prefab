@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4702037670864131006}
   - component: {fileID: 4702037670864131001}
-  - component: {fileID: 4702037670864131000}
   - component: {fileID: 4702037670864131003}
   - component: {fileID: 4702037670864131002}
   - component: {fileID: 4702037670864130997}
+  - component: {fileID: 686243365383422444}
+  - component: {fileID: 6085027267067111232}
   m_Layer: 3
   m_Name: Golem1
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6767266734697148751, guid: b10aba54aecddfa4a955158f5746f0f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -88,20 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4702037670864131000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4702037670864130996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ca1c7be12aa1d47908ef0f0b285b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 8
-  anim: {fileID: 4702037670864130997}
 --- !u!60 &4702037670864131003
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +163,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4702037670864130996}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -209,3 +196,44 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &686243365383422444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702037670864130996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc824ccd7d9e3484ca61f61466127833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.01
+  finishLine: 1.04
+  monsters: {fileID: 4702037670864131002}
+  sprite: {fileID: 4702037670864131001}
+  anim: {fileID: 4702037670864130997}
+  visionRange: 3.12
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 128
+  atkRange: 1.01
+  layersAtk:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &6085027267067111232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702037670864130996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80c48d84826c79419fbd4a4bb1c469e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 6
+  anim: {fileID: 4702037670864130997}
+  timeDeath: 0.6
+  coins: {fileID: 5803145811254693855, guid: 0727e3545d8f3dc43aafaa8ea83df3d7, type: 3}

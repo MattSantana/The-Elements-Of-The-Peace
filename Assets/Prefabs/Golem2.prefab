@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 5042069284619870856}
   - component: {fileID: 5042069284619870857}
   - component: {fileID: 5042069284619870862}
-  - component: {fileID: 5042069284619870863}
   - component: {fileID: 5042069284619870860}
+  - component: {fileID: 1528409762}
+  - component: {fileID: 5885796919928910732}
+  - component: {fileID: 1507582030}
   m_Layer: 3
   m_Name: Golem2
   m_TagString: Untagged
@@ -96,7 +98,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5042069284619870861}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -108,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &5042069284619870862
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,20 +127,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0028005776, y: -0.015404138}
   m_Size: {x: 0.23669659, y: 0.29551184}
   m_Direction: 0
---- !u!114 &5042069284619870863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5042069284619870861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ca1c7be12aa1d47908ef0f0b285b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 0
-  anim: {fileID: 5042069284619870860}
 --- !u!95 &5042069284619870860
 Animator:
   serializedVersion: 4
@@ -159,3 +147,62 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1528409762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042069284619870861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc824ccd7d9e3484ca61f61466127833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  finishLine: 1
+  monsters: {fileID: 5042069284619870857}
+  sprite: {fileID: 5042069284619870856}
+  anim: {fileID: 5042069284619870860}
+  visionRange: 3.79
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 128
+  atkRange: 1.06
+  layersAtk:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &5885796919928910732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042069284619870861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1a9ad2aba257646b8fd40c16e00d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 6
+  anim: {fileID: 5042069284619870860}
+  timeDeath: 0.5
+  coins: {fileID: 5803145811254693855, guid: 0727e3545d8f3dc43aafaa8ea83df3d7, type: 3}
+--- !u!114 &1507582030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042069284619870861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16333e620e0624d46b9890e7d306cb0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layersAtk:
+    serializedVersion: 2
+    m_Bits: 128
+  atkRange: 2.42
+  timer: 0
+  anim: {fileID: 0}
