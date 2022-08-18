@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 5042069284619870857}
   - component: {fileID: 5042069284619870862}
   - component: {fileID: 5042069284619870860}
-  - component: {fileID: 1528409762}
   - component: {fileID: 5885796919928910732}
-  - component: {fileID: 1507582030}
   m_Layer: 3
   m_Name: Golem2
   m_TagString: Untagged
@@ -147,31 +145,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1528409762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5042069284619870861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc824ccd7d9e3484ca61f61466127833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  finishLine: 1
-  monsters: {fileID: 5042069284619870857}
-  sprite: {fileID: 5042069284619870856}
-  anim: {fileID: 5042069284619870860}
-  visionRange: 3.79
-  layerTarget:
-    serializedVersion: 2
-    m_Bits: 128
-  atkRange: 1.06
-  layersAtk:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &5885796919928910732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,22 +160,4 @@ MonoBehaviour:
   life: 6
   anim: {fileID: 5042069284619870860}
   timeDeath: 0.5
-  coins: {fileID: 5803145811254693855, guid: 0727e3545d8f3dc43aafaa8ea83df3d7, type: 3}
---- !u!114 &1507582030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5042069284619870861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16333e620e0624d46b9890e7d306cb0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layersAtk:
-    serializedVersion: 2
-    m_Bits: 128
-  atkRange: 2.42
-  timer: 0
-  anim: {fileID: 0}
+  coins: {fileID: 0}

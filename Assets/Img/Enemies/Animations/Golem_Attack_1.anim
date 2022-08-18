@@ -103,7 +103,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: GolemEndAbility
+    functionName: Trigger
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

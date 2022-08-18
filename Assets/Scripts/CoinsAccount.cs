@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoinsAccount : MonoBehaviour
 {
     private int coins = 0;
     //Audio coins
     public AudioClip coinsSound;
+    public Text txtCoins;
 
     void Start()
     {  
@@ -22,6 +24,7 @@ public class CoinsAccount : MonoBehaviour
         {
             // soma moedas
             coins++;
+            txtCoins.text = coins.ToString();
             Manager.inst.PlayAudio(coinsSound); 
             Destroy(other.gameObject);
             

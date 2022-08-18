@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4702037670864131003}
   - component: {fileID: 4702037670864131002}
   - component: {fileID: 4702037670864130997}
-  - component: {fileID: 686243365383422444}
-  - component: {fileID: 6085027267067111232}
+  - component: {fileID: 343573151}
+  - component: {fileID: 343573152}
+  - component: {fileID: 343573153}
   m_Layer: 3
   m_Name: Golem1
   m_TagString: Untagged
@@ -170,7 +171,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -196,7 +197,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &686243365383422444
+--- !u!114 &343573151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,23 +206,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4702037670864130996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc824ccd7d9e3484ca61f61466127833, type: 3}
+  m_Script: {fileID: 11500000, guid: 216ed37945202f043b9b378cc5de47d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.01
-  finishLine: 1.04
-  monsters: {fileID: 4702037670864131002}
-  sprite: {fileID: 4702037670864131001}
-  anim: {fileID: 4702037670864130997}
-  visionRange: 3.12
+  distance: 0
+  distanceControl: 8
+  speed: 2
+  visionRange: 1.25
   layerTarget:
     serializedVersion: 2
     m_Bits: 128
-  atkRange: 1.01
-  layersAtk:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &6085027267067111232
+--- !u!114 &343573152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,5 +230,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 6
   anim: {fileID: 4702037670864130997}
-  timeDeath: 0.6
-  coins: {fileID: 5803145811254693855, guid: 0727e3545d8f3dc43aafaa8ea83df3d7, type: 3}
+  coins: {fileID: 4071882791050287698, guid: 052acd9d1fca4bf48b3444e304931421, type: 3}
+  kbForce: 0
+--- !u!114 &343573153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702037670864130996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd7331773b4b8f4ab14c6f2a4c156b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knock: 1
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 128

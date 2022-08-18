@@ -29,6 +29,17 @@ public class Inputs : MonoBehaviour
     //Variável para determinar um tempo de duração do efeito de piscada no Knockback do iTween.
     private WaitForSeconds time = new WaitForSeconds(0.25f);
 
+    //Knockback
+    [Header("KnockBack")]
+    [SerializeField] private Transform _center;
+    [SerializeField] private float _knockbackVel = 8f;
+    [SerializeField] private float _knockbackTime = 1f;
+    [SerializeField] private bool _knockbacked;
+    private SpriteRenderer _spriteRenderer;
+
+    public static Input i ;
+    
+
     void Start()
     {
         facingRight = transform.localScale;
@@ -37,8 +48,7 @@ public class Inputs : MonoBehaviour
         
         animator = GetComponent<Animator>();
         Knight = GetComponent<Rigidbody2D>();
-
-       
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -49,19 +59,18 @@ public class Inputs : MonoBehaviour
         transform.Translate (new Vector3(0, 0  ,0));        
        }else{
         // Jogador não esta atacando. Pode se mover!
-        float h = Input.GetAxis("Horizontal") ;
-        transform.Translate (new Vector3(h * vel, 0  ,0) );   
-
-        //Faz o jogador olhar para o lado que ele virar. 
-        if( h  > 0 ) 
-        { 
+           float h = Input.GetAxis("Horizontal") ;
+           transform.Translate (new Vector3(h * vel, 0  ,0) );  
+           
+         //Faz o jogador olhar para o lado que ele virar. 
+         if( h  > 0 ) 
+         { 
            transform.localScale = facingRight;
-        }
-        if(h < 0 ){
+         }
+         if(h < 0 ){
            transform.localScale = facingLeft;
-        }       
+         }                    
        }
-
 
         //Faz o Player pular
         inTheGround = Physics2D.OverlapCircle( isGround.position, 0.2f, Ground );
@@ -70,7 +79,8 @@ public class Inputs : MonoBehaviour
         {
             Knight.velocity =  Vector2.up * 20;
             //ativar animação do pulo
-            animator.SetBool("Jumping", true);         
+            animator.SetBool("Jumping", true);
+            SlimeIA.canFollow = false;         
         }
         
         if( Input.GetButtonDown("Jump") && inTheGround == false && doubleJump > 0 )
@@ -83,6 +93,7 @@ public class Inputs : MonoBehaviour
         {
             doubleJump = 1;
             animator.SetBool("Jumping", false);
+            SlimeIA.canFollow = true;
         }
 
             //Muda a animação do player.
@@ -96,14 +107,45 @@ public class Inputs : MonoBehaviour
 
         }  
     }   
-    void backColor()
+   
+    public void Knockback(Transform t)
     {
-        iTween.ColorTo(gameObject, iTween.Hash("color", Color.white, "time", 0.1f));
+        if(!_knockbacked)
+        {
+           float h = Input.GetAxis("Horizontal") ;
+           transform.Translate (new Vector3(h * vel, 0  ,0) ); 
+
+         //Faz o jogador olhar para o lado que ele virar. 
+         if( h  > 0 ) 
+         { 
+           transform.localScale = facingRight;
+         }
+         if(h < 0 ){
+           transform.localScale = facingLeft;
+         }   
+        }
+
+        var dir = _center.position - t.position;
+        _knockbacked = true;
+        Knight.velocity = dir.normalized * _knockbackVel;
+        _spriteRenderer.color = Color.red;
+        LifeBarEnemy.instance.hitPlayer(1);
+        StartCoroutine(FadeToWhite());
+        StartCoroutine(Unknockback());
     }
-    IEnumerator stopEffect()
+    private IEnumerator FadeToWhite()
     {
-        yield return time;
-        iTween.Stop(gameObject, true);
-        backColor();
+        while(_spriteRenderer.color != Color.white)
+        {
+            yield return null;
+            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color, Color.white, Time.deltaTime * 3);
+
+        }
+    }
+
+    private IEnumerator Unknockback()
+    {
+        yield return new WaitForSeconds(_knockbackTime);
+        _knockbacked = false;
     } 
 }

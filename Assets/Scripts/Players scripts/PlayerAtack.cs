@@ -22,7 +22,7 @@ public class PlayerAtack : MonoBehaviour
     private bool ifAttacking;
 
     void Start() {
-        nextAtk = new Cooldown(0.40f, true);
+        nextAtk = new Cooldown(0.50f, true);
         finishCombo = new Cooldown(0.71f, true);
 
         this.ifAttacking = false;

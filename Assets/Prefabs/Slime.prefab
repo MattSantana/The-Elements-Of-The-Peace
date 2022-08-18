@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &974311885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 974311886}
-  m_Layer: 3
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &974311886
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974311885}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.204, y: -0.1627, z: 0}
-  m_LocalScale: {x: 0.6395293, y: 0.6395293, z: 0.6395293}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3588140650160820835}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1632200444
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1632200445}
-  m_Layer: 3
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1632200445
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632200444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.185, y: -0.1627, z: 0}
-  m_LocalScale: {x: 0.6395293, y: 0.6395293, z: 0.6395293}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3588140650160820835}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3588140650160820839
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +15,8 @@ GameObject:
   - component: {fileID: 1145566496}
   - component: {fileID: 6920547814995519517}
   - component: {fileID: 4123685132989846953}
+  - component: {fileID: 566512915}
+  - component: {fileID: 91416372}
   m_Layer: 3
   m_Name: Slime
   m_TagString: Enemy
@@ -95,9 +35,7 @@ Transform:
   m_LocalPosition: {x: -6.81, y: -2.95, z: 0}
   m_LocalScale: {x: 8.154967, y: 8.154967, z: 8.154967}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1632200445}
-  - {fileID: 974311886}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,7 +173,8 @@ MonoBehaviour:
   life: 4
   anim: {fileID: 3588140650160820860}
   timeDeath: 0.4
-  coins: {fileID: 5803145811254693855, guid: 0727e3545d8f3dc43aafaa8ea83df3d7, type: 3}
+  coins: {fileID: 4071882791050287698, guid: 052acd9d1fca4bf48b3444e304931421, type: 3}
+  kbForce: 1.25
 --- !u!114 &4123685132989846953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,17 +187,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc824ccd7d9e3484ca61f61466127833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limit:
-  - {fileID: 1632200445}
-  - {fileID: 974311886}
-  layerV:
-    serializedVersion: 2
-    m_Bits: 128
-  visionE: 0
-  visionRange: 4.38
-  srender: {fileID: 0}
+  pontoA: {fileID: 0}
+  pontoB: {fileID: 0}
+  visionRange: 5
   layerTarget:
     serializedVersion: 2
     m_Bits: 128
-  atkPoint: 0
-  k: {fileID: 0}
+  faceFlip: {fileID: 3588140650160820834}
+--- !u!114 &566512915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588140650160820839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9bda2c600488e4cb89933d6c0de157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+  distanceControl: 7
+  speed: 1.8
+  visionRange: 1.25
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 128
+  faceFlip: {fileID: 3588140650160820834}
+--- !u!114 &91416372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588140650160820839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd7331773b4b8f4ab14c6f2a4c156b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knock: 1
+  layerTarget:
+    serializedVersion: 2
+    m_Bits: 128

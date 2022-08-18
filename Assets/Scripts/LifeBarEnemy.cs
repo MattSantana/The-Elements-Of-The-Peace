@@ -14,6 +14,10 @@ public class LifeBarEnemy : MonoBehaviour
 
     public int atualLife;
     public int maxHeart;
+    [SerializeField]
+    private Animator anim;
+
+
 
     // Variável para liberar acesso ao código da câmera pelo sprit Knock2.
     public static LifeBarEnemy instance = null;
@@ -40,6 +44,7 @@ public class LifeBarEnemy : MonoBehaviour
         {
             hitPlayer(1);
         }        
+        
     }
 
     void howMutchLife()
@@ -93,6 +98,7 @@ public class LifeBarEnemy : MonoBehaviour
         if( atualLife> 0 )
         {
             atualLife -= d;
+            anim.SetTrigger("PlayerHit");
         }
         heart();
     }

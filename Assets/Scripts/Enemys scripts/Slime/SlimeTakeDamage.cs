@@ -14,8 +14,23 @@ public class SlimeTakeDamage : MonoBehaviour
   [SerializeField]
   private GameObject coins;
 
+  private Rigidbody2D rb;
+  private GameObject player;
+  public float kbForce;
+
+
+    void Start()
+    {
+      anim = GetComponent<Animator>();
+      rb = GetComponent<Rigidbody2D>();
+
+      player = GameObject.FindGameObjectWithTag("Player");
+    } 
+
   public void slimeDamage()
   {
+    TakingDamage();
+
     this.life--;
     Debug.Log (this.name + "recebeu dano. Vida: " + this.life);
 
@@ -23,11 +38,23 @@ public class SlimeTakeDamage : MonoBehaviour
     {
       //finalizado
       this.anim.SetBool("SlimeDeath", true);  
-      Destroy(gameObject, timeDeath );
-      Instantiate(coins, this.gameObject.transform.position, Quaternion.identity );
     }else{
       //recebe dano
       this.anim.SetTrigger("SlimeTakeHit");
     }
   }
+  public void destroyEnemy()
+  {
+    Destroy(gameObject);
+    Instantiate(coins, this.gameObject.transform.position, Quaternion.identity );
+
+  }
+  void TakingDamage()
+  {
+    Vector2 difference = (transform.position - player.transform.position).normalized;
+    Vector2 force = difference * kbForce;
+    rb.AddForce(force, ForceMode2D.Impulse);
+
+    Debug.Log("Aqui");
+  }  
 }

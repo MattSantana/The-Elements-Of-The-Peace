@@ -26,6 +26,7 @@ public class FollowCamera : MonoBehaviour
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(8,3);
         followHero = true;
         lastTarget = player.transform.position;
     }
