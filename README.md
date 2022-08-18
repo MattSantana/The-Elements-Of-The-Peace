@@ -16,11 +16,5 @@ Characters:
 UI:
 - ZOSMA | blog.naver.com/soppy0123
 
-Background:
-- Éder Muniz | edermuniz.carrd.co/
-
-Assets:
-- Objects: Cainos | cainos.itch.io
-PS: Coin animation is on me
-
-- Cliffs: Ansimuz | ansimuz. with
+Tiles and Cliffs:
+- Ansimuz | ansimuz. with
